@@ -1,14 +1,15 @@
 import React from 'react'
-import {nav_items} from "@/lib/constants";
+import {NAV_ITEMS} from "@/lib/constants";
+import Link from "next/link";
 
 const NavItems = () => {
     return (
        <ul className='flex flex-col sm:flex-row p-2 gap-3 sm:gap-10 font-medium'>
-           {nav_items.map({ href, label}) => (
+           {NAV_ITEMS.map(({ href, label}) => (
                <li key={href}>
-                    <Link href={href} className={'hover'}
+                    <Link href={href} className={'hover'}>{label}</Link>
                </li>
-               )}
+           ))}
        </ul>
     )
 }
