@@ -2,7 +2,7 @@ import { inngest } from '@/lib/inngest/client'
 import {NEWS_SUMMARY_EMAIL_PROMPT, PERSONALIZED_WELCOME_EMAIL_PROMPT} from "@/lib/inngest/prompts";
 import {sendWelcomeEmail, sendNewsSummaryEmail} from "@/lib/nodemailer";
 import {getAllUsersForNewsEmail} from "@/lib/actions/user.action";
-import { getNews, type MarketNewsArticle } from "@/lib/actions/finnhub.actions";
+import { getNews } from "@/lib/actions/finnhub.actions";
 import { getWatchlistSymbolsByEmail } from "@/lib/actions/watchlist.actions";
 import  { formatDateToday } from "@/lib/utils";
 
@@ -109,7 +109,7 @@ export const sendDailyNewsSummary = inngest.createFunction(
         // Step 4: Send the emails
         await step.run('send-daily-news-emails', async () => {
 
-            const date = formatDateToday();
+            const date = formatDateToday;
             const tasks = userNewsSummaries.map(async ({ user, newsContent }) => {
                 if (!newsContent) return null;
                 try {
