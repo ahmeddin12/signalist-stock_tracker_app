@@ -109,7 +109,7 @@ export const sendDailyNewsSummary = inngest.createFunction(
         // Step 4: Send the emails
         await step.run('send-daily-news-emails', async () => {
 
-            const date = formatDateToday  ;
+            const date = formatDateToday();
             const tasks = userNewsSummaries.map(async ({ user, newsContent }) => {
                 if (!newsContent) return null;
                 try {
