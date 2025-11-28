@@ -5,6 +5,19 @@ import React, { useMemo, useState } from "react";
 // This component focuses on UI contract only. It toggles local state and
 // calls onWatchlistChange if provided. Styling hooks match globals.css.
 
+// Local props type for this component to avoid missing global type/import issues
+// and to reflect the actual props used by the UI implementation.
+export type WatchlistButtonComponentProps = {
+    symbol: string;
+    company?: string;
+    isInWatchlist?: boolean;
+    showTrashIcon?: boolean;
+    // 'icon' renders a star-only button, otherwise a labeled button
+    type?: 'button' | 'icon';
+    // Callback invoked after toggle: (symbol, isAdded)
+    onWatchlistChange?: (symbol: string, isAdded: boolean) => void;
+};
+
 const WatchlistButton = ({
                              symbol,
                              company,
@@ -12,7 +25,7 @@ const WatchlistButton = ({
                              showTrashIcon = false,
                              type = "button",
                              onWatchlistChange,
-                         }: WatchlistButtonProps) => {
+                         }: WatchlistButtonComponentProps) => {
     const [added, setAdded] = useState<boolean>(!!isInWatchlist);
 
     const label = useMemo(() => {
