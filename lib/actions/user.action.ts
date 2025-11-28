@@ -27,4 +27,3 @@ export const getAllUsersForNewsEmail = async (): Promise<{ id: string; email: st
         return [];
     }
 }
-}
